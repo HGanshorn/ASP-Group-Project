@@ -29,6 +29,27 @@ namespace GroupProject.Controllers
             return View();
         }
 
+        public IActionResult ShoppingCart()
+        {
+            ViewData["Message"] = "Your shopping cart page.";
+
+            return View();
+        }
+
+        public IActionResult Order()
+        {
+            ViewData["Message"] = "Your order page.";
+
+            return View();
+        }
+
+        public IActionResult OrderSuccess()
+        {
+            ViewData["Message"] = "Your order success page.";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

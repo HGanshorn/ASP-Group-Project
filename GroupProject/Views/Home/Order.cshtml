@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h1>Place Order</h1>
+<br />
+<div id="itemDescription">
+    <label>Items go here</label>
+</div>
+<br />
+<h2>Billing Information</h2>
+<br />
+<label>First Name: </label> <br /> <input type="text" name="fname" /> <br />
+<label>Last Name: </label> <br /> <input type="text" name="lname" /> <br />
+<label>Address: </label> <br /> <input type="text" name="address" /> <br />
+<label>City: </label> <br /> <input type="text" name="city" /> <br />
+<label>State: </label> <br /> <input type="text" name="state" /> <br />
+<label>Zip: </label> <br /> <input type="text" name="zip" /> <br />
+<br />
+<label>Card Number: </label> <br /> <input type="text" name="cardNum" /> <br />
+<label>Month: </label> <br /> <input type="text" name="month" /> <br />
+ <label>Year: </label> <br />  <input type="text" name="year" /> <br />
+<label>CVC: </label> <br /> <input type="text" name="cvc" /> <br /> <br />
+<a asp-action="OrderSuccess"><input type="button" class="OrderSuccess" value="Place Order" /></a>
