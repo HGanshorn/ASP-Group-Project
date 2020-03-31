@@ -50,6 +50,13 @@ namespace GroupProject.Controllers
             return View();
         }
 
+        public IActionResult Newsletter()
+        {
+            ViewData["Message"] = "Your newsletter page.";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
