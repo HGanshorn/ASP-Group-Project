@@ -11,9 +11,10 @@ using System;
 namespace GroupProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200402185535_addProductClass")]
+    partial class addProductClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,28 +72,10 @@ namespace GroupProject.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("GroupProject.Models.Category", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.HasKey("CategoryId");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("GroupProject.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CategoryId")
-                        .IsRequired();
-
-                    b.Property<int?>("CategoryId1");
 
                     b.Property<string>("Description")
                         .IsRequired();
@@ -103,8 +86,6 @@ namespace GroupProject.Data.Migrations
                     b.Property<decimal>("Price");
 
                     b.HasKey("ProductId");
-
-                    b.HasIndex("CategoryId1");
 
                     b.ToTable("Products");
                 });
@@ -215,13 +196,6 @@ namespace GroupProject.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("GroupProject.Models.Product", b =>
-                {
-                    b.HasOne("GroupProject.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
