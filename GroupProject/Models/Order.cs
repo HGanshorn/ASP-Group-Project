@@ -8,7 +8,7 @@ namespace GroupProject.Models
 {
     public class Order
     {
-        
+
         public int OrderId { get; set; }
         [Required(ErrorMessage = "First name is required")]
         public string FirstName { get; set; }
@@ -32,4 +32,8 @@ namespace GroupProject.Models
         public int CVC { get; set; }
 
         //add foreign key productId
+        [Required(ErrorMessage = "Product is required")]
+        public string ProductId { get; set; }
+        public Product Product { get; set; }
     }
+}
