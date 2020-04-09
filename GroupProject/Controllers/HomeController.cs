@@ -15,16 +15,9 @@ namespace GroupProject.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Products()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Your products page.";
 
             return View();
         }
