@@ -27,7 +27,7 @@ namespace GroupProject.Models
         [Required(ErrorMessage = "Month is required")]
         public int Month { get; set; }
         [Required(ErrorMessage = "Day is required")]
-        public int Day { get; set; }
+        public int Year { get; set; }
         [Required(ErrorMessage = "CVC is required")]
         public int CVC { get; set; }
 
