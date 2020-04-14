@@ -12,7 +12,7 @@ namespace GroupProject.Models
         public virtual void AddItem(Product product, int quantity)
         {
             CartLine line = lineCollection
-                .Where(p => p.Product.ProductID == product.ProductID)
+                .Where(p => p.Product.ProductId == product.ProductId)
                 .FirstOrDefault();
 
             if (line == null)
@@ -20,7 +20,7 @@ namespace GroupProject.Models
                 lineCollection.Add(new CartLine
                 {
                     Product = product,
-                    quantity = quantity
+                    Quantity = quantity
                 });
             }
             else
@@ -30,7 +30,7 @@ namespace GroupProject.Models
         }
 
         public virtual void RemoveLine(Product product) =>
-            lineCollection.RemoveAll(1 => 1.Product.ProductID == product.ProductId);
+            lineCollection.RemoveAll(1 => 1.Product.ProductId == product.ProductId);
 
         public virtual decimal ComputeTotalValue() =>
             lineCollection.Sum(e => e.Product.Price * e.Quantity);
