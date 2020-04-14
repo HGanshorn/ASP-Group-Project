@@ -11,7 +11,7 @@ namespace GroupProject.Controllers
 {
     public class CartController : Controller
     {
-        private IProductRepository repository; 
+        private IProductRepository repository;
 
         public CartController(IProductRepository repo)
         {
@@ -54,7 +54,8 @@ namespace GroupProject.Controllers
         {
             Cart cart = HttpContext.Session.GetJson<cart>("Cart") ?? new Cart();
             return cart;
-;        }
+            ;
+        }
 
         private void SaveCart(Cart cart)
         {

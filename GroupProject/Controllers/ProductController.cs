@@ -73,12 +73,12 @@ namespace GroupProject.Controllers
                 return NotFound();
             }
 
-            var movie = await _context.Products.SingleOrDefaultAsync(m => m.ProductId == id);
-            if (movie == null)
+            var product = await _context.Products.SingleOrDefaultAsync(m => m.ProductId == id);
+            if (product == null)
             {
                 return NotFound();
             }
-            return View(movie);
+            return View(product);
         }
 
         // POST: Product/Edit/5
