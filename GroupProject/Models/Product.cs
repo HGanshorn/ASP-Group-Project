@@ -16,6 +16,7 @@ namespace GroupProject.Models
         public decimal Price { get; set; }
         [Required (ErrorMessage ="Description is required")]
         public string Description { get; set; }
+        public string Image { get; set; }
 
         [Required (ErrorMessage ="Category is required")]
         public string CategoryId { get; set; }

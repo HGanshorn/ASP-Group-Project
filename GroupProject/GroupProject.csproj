@@ -33,4 +33,20 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\AnakinReplicaLightsaber.jpg" />
+    <None Include="wwwroot\images\DarthVaderHelmet.jpg" />
+    <None Include="wwwroot\images\HanSoloBlaster.png" />
+    <None Include="wwwroot\images\HanSoloCost.jpg" />
+    <None Include="wwwroot\images\JediRobes.jpg" />
+    <None Include="wwwroot\images\LukeToyLightsaber.jpg" />
+    <None Include="wwwroot\images\ObiWanReplicaLightsaber.jpg" />
+    <None Include="wwwroot\images\ReyActionFigure.jpg" />
+    <None Include="wwwroot\images\Stormtrooper.jpg" />
+  </ItemGroup>
+
 </Project>
