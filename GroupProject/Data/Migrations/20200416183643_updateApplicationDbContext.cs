@@ -15,12 +15,21 @@ namespace GroupProject.Data.Migrations
                 nullable: true,
                 oldClrType: typeof(int));
 
-            migrationBuilder.AddColumn<string>(
-                name: "CategoryId",
-                table: "Products",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+
+            /**************************************************************
+             * 
+             * Note from Glenn I think that this line was trying to add string 
+             * CategoryId I think this line was causing the update-database to fail
+             * 
+             ***************************************************************
+             */
+             
+            //migrationBuilder.AddColumn<string>(
+            //    name: "CategoryId",
+            //    table: "Products",
+            //    type: "nvarchar(max)",
+            //    nullable: false,
+            //    defaultValue: "");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
