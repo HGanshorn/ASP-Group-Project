@@ -1,50 +1,50 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-//namespace GroupProject.Models
-//{
-//    public class Cart
-//    {
-//        private List<CartLine> lineCollection = new List<CartLine>();
+namespace GroupProject.Models
+{
+    public class Cart
+    {
+        private List<CartLine> lineCollection = new List<CartLine>();
 
-//        public virtual void AddItem(Product product, int quantity)
-//        {
-//            CartLine line = lineCollection
-//                .Where(p => p.Product.ProductId == product.ProductId)
-//                .FirstOrDefault();
+        public virtual void AddItem(Product product, int quantity)
+        {
+            CartLine line = lineCollection
+                .Where(p => p.Product.ProductId == product.ProductId)
+                .FirstOrDefault();
 
-//            if (line == null)
-//            {
-//                lineCollection.Add(new CartLine
-//                {
-//                    Product = product,
-//                    Quantity = quantity
-//                });
-//            }
-//            else
-//            {
-//                line.Quantity += quantity;
-//            }
-//        }
+            if (line == null)
+            {
+                lineCollection.Add(new CartLine
+                {
+                    Product = product,
+                    Quantity = quantity
+                });
+            }
+            else
+            {
+                line.Quantity += quantity;
+            }
+        }
 
-//        public virtual void RemoveLine(Product product) =>
-//            lineCollection.RemoveAll(1 => 1.Product.ProductId == product.ProductId);
+        public virtual void RemoveLine(Product product) =>
+            lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);
 
-//        public virtual decimal ComputeTotalValue() =>
-//            lineCollection.Sum(e => e.Product.Price * e.Quantity);
+        public virtual decimal ComputeTotalValue() =>
+            lineCollection.Sum(e => e.Product.Price * e.Quantity);
 
-//        public virtual void Clear() => lineCollection.Clear();
+        public virtual void Clear() => lineCollection.Clear();
 
-//        public virtual IEnumerable<CartLine> Lines => lineCollection;
+        public virtual IEnumerable<CartLine> Lines => lineCollection;
 
-//    }
+    }
 
-//    public class CartLine
-//    {
-//        public int CartLineID { get; set; }
-//        public Product Product { get; set; }
-//        public int Quantity { get; set; }
-//    }
-//}
+    public class CartLine
+    {
+        public int CartLineID { get; set; }
+        public Product Product { get; set; }
+        public int Quantity { get; set; }
+    }
+}

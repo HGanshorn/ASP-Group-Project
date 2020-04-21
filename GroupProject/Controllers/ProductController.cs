@@ -13,6 +13,7 @@ namespace GroupProject.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
+       
 
         public ProductController(ApplicationDbContext context)
         {
@@ -23,6 +24,24 @@ namespace GroupProject.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Products.ToListAsync());
+        }
+
+        // GET: add to cart
+        public async Task<IActionResult> AddToCart(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Products
+                .SingleOrDefaultAsync(m => m.ProductId == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
         }
 
         // GET: Product/Details/5
