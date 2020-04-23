@@ -1,0 +1,11 @@
+﻿SET IDENTITY_INSERT [dbo].[Products] ON
+INSERT INTO [dbo].[Products] ([ProductId], [Description], [Name], [Price], [CategoryId1], [CategoryId], [Image]) VALUES (1, N'Obi-Wan Kenobi or Anakin Skywalker robes', N'Jedi Robes', CAST(99.99 AS Decimal(18, 2)), 1, N'', N'JediRobes.jpg')
+INSERT INTO [dbo].[Products] ([ProductId], [Description], [Name], [Price], [CategoryId1], [CategoryId], [Image]) VALUES (2, N'Han''s outfit from A New Hope', N'Han Solo Costume', CAST(80.99 AS Decimal(18, 2)), 1, N'', N'HanSoloCost.jpg')
+INSERT INTO [dbo].[Products] ([ProductId], [Description], [Name], [Price], [CategoryId1], [CategoryId], [Image]) VALUES (3, N'Full Stormtrooper armour', N'Stormtrooper Armour', CAST(99.99 AS Decimal(18, 2)), 1, N'', N'StormTrooper.jpg')
+INSERT INTO [dbo].[Products] ([ProductId], [Description], [Name], [Price], [CategoryId1], [CategoryId], [Image]) VALUES (4, N'Anakin Skywalker''s replica lightsaber', N'Anakin Skywalker''s Lightsaber', CAST(200.00 AS Decimal(18, 2)), 2, N'', N'AnakinReplicaLightsaber.jpg')
+INSERT INTO [dbo].[Products] ([ProductId], [Description], [Name], [Price], [CategoryId1], [CategoryId], [Image]) VALUES (8, N'Obi-Wan Kenobi''s replica lightsaber', N'Obi-Wan Kenobi''s ', CAST(200.00 AS Decimal(18, 2)), 2, N'', N'ObiWanReplicaLightsaber.jpg')
+INSERT INTO [dbo].[Products] ([ProductId], [Description], [Name], [Price], [CategoryId1], [CategoryId], [Image]) VALUES (9, N'Han Solo''s DL-44 Blaster', N'Han Solo''s Blaster', CAST(150.00 AS Decimal(18, 2)), 2, N'', N'HanSoloBlaster.png')
+INSERT INTO [dbo].[Products] ([ProductId], [Description], [Name], [Price], [CategoryId1], [CategoryId], [Image]) VALUES (10, N'Toy Darth Vader Helmet', N'Darth Vader Helmet', CAST(20.00 AS Decimal(18, 2)), 3, N'', N'DarthVaderHelmet.jpg')
+INSERT INTO [dbo].[Products] ([ProductId], [Description], [Name], [Price], [CategoryId1], [CategoryId], [Image]) VALUES (11, N'Rey Skywalker Action Figure', N'Rey Action Figure', CAST(7.99 AS Decimal(18, 2)), 3, N'', N'ReyActionFigure.jpg')
+INSERT INTO [dbo].[Products] ([ProductId], [Description], [Name], [Price], [CategoryId1], [CategoryId], [Image]) VALUES (12, N'Luke Skywalker toy lightsaber', N'Luke Skywalker Lightsaber', CAST(14.99 AS Decimal(18, 2)), 3, N'', N'LukeToyLightsaber.jpg')
+SET IDENTITY_INSERT [dbo].[Products] OFF

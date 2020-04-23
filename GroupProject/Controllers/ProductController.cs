@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GroupProject.Data;
 using GroupProject.Models;
+using AspNetCore;
 
 namespace GroupProject.Controllers
 {
@@ -42,6 +43,19 @@ namespace GroupProject.Controllers
             }
 
             return View(product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddToCart([Bind("CartId,ProductId,CustomerId")] Cart cart, int? id)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(cart);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(cart);
         }
 
         // GET: Product/Details/5
