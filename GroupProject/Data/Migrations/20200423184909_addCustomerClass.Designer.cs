@@ -11,9 +11,10 @@ using System;
 namespace GroupProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200423184909_addCustomerClass")]
+    partial class addCustomerClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,28 +72,6 @@ namespace GroupProject.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("GroupProject.Models.Cart", b =>
-                {
-                    b.Property<int>("CartId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CustomerId");
-
-                    b.Property<int?>("CustomerId1");
-
-                    b.Property<string>("ProductId");
-
-                    b.Property<int?>("ProductId1");
-
-                    b.HasKey("CartId");
-
-                    b.HasIndex("CustomerId1");
-
-                    b.HasIndex("ProductId1");
-
-                    b.ToTable("Carts");
-                });
-
             modelBuilder.Entity("GroupProject.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -104,42 +83,6 @@ namespace GroupProject.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("GroupProject.Models.Customer", b =>
-                {
-                    b.Property<int>("CustomerId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Address")
-                        .IsRequired();
-
-                    b.Property<int>("CVC");
-
-                    b.Property<int>("CardNumber");
-
-                    b.Property<string>("City")
-                        .IsRequired();
-
-                    b.Property<string>("FirstName")
-                        .IsRequired();
-
-                    b.Property<string>("LastName")
-                        .IsRequired();
-
-                    b.Property<int>("Month");
-
-                    b.Property<string>("State")
-                        .IsRequired();
-
-                    b.Property<int>("Year");
-
-                    b.Property<string>("Zip")
-                        .IsRequired();
-
-                    b.HasKey("CustomerId");
-
-                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("GroupProject.Models.Newsletter", b =>
@@ -166,17 +109,38 @@ namespace GroupProject.Data.Migrations
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CustomerId");
+                    b.Property<string>("Address")
+                        .IsRequired();
 
-                    b.Property<int?>("CustomerId1");
+                    b.Property<int>("CVC");
 
-                    b.Property<string>("ProductId");
+                    b.Property<int>("CardNumber");
+
+                    b.Property<string>("City")
+                        .IsRequired();
+
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<string>("LastName")
+                        .IsRequired();
+
+                    b.Property<int>("Month");
+
+                    b.Property<string>("ProductId")
+                        .IsRequired();
 
                     b.Property<int?>("ProductId1");
 
-                    b.HasKey("OrderId");
+                    b.Property<string>("State")
+                        .IsRequired();
 
-                    b.HasIndex("CustomerId1");
+                    b.Property<int>("Year");
+
+                    b.Property<string>("Zip")
+                        .IsRequired();
+
+                    b.HasKey("OrderId");
 
                     b.HasIndex("ProductId1");
 
@@ -318,23 +282,8 @@ namespace GroupProject.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("GroupProject.Models.Cart", b =>
-                {
-                    b.HasOne("GroupProject.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId1");
-
-                    b.HasOne("GroupProject.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId1");
-                });
-
             modelBuilder.Entity("GroupProject.Models.Order", b =>
                 {
-                    b.HasOne("GroupProject.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId1");
-
                     b.HasOne("GroupProject.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId1");
