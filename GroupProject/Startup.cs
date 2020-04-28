@@ -35,6 +35,8 @@ namespace GroupProject
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddMemoryCache();
+            services.AddSession();
 
             services.AddMvc();
         }
@@ -56,6 +58,8 @@ namespace GroupProject
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

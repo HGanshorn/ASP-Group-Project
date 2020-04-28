@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GroupProject.Data;
 using GroupProject.Models;
+using GroupProject.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GroupProject.Controllers
 {
@@ -27,23 +29,37 @@ namespace GroupProject.Controllers
         }
 
         // GET: add to cart
-        public async Task<IActionResult> AddToCart(int? id)
+        public IActionResult AddToCart(int? id, string returnUrl)
         {
-            if (id == null)
+            Product product = _context.Products.FirstOrDefault(p => p.ProductId == id);
+
+            if (product != null)
             {
-                return NotFound();
+                Cart cart = GetCart();
+                cart.AddItem(product, 1);
+                SaveCart(cart);
+
             }
 
-            var product = await _context.Products
-                .SingleOrDefaultAsync(m => m.ProductId == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
 
-            return View(product);
+            return View(new CartIndexViewModel { Cart = GetCart(), ReturnUrl = returnUrl });
+
         }
 
+        private Cart GetCart()
+        {
+            Cart cart = HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
+            return cart;
+
+        }
+
+        private void SaveCart(Cart cart)
+        {
+            HttpContext.Session.SetJson("Cart", cart);
+
+        }
+
+        [Authorize]
         // GET: Product/Details/5
         public async Task<IActionResult> Details(int? id)
         {
