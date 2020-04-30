@@ -23,6 +23,7 @@
                 <td class="text-left"> @line.Product.Description</td>
                 <td class="text-right">@line.Product.Price.ToString("c")</td>
                 <td class="text-right">@((line.Quantity * line.Product.Price).ToString("c"))</td>
+                <td><a asp-action="RemoveFromCart" asp-route-id="@line.Product.ProductId" asp-route-returnUrl="Product/index">Remove From Cart</a></td>
             </tr>
 
         }
@@ -39,6 +40,6 @@
     @*This most likley only works on my computer but I am working on it.*@
     <a class="btn-primary" href=" https://localhost:44363/@Model.ReturnUrl">Continue Shopping</a> |
     <a asp-action="../Home/Order"><input type="button" class="Order" value="Order Now" /></a>
-
+   
 
 </div>

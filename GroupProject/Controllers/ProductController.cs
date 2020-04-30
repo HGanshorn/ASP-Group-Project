@@ -59,6 +59,20 @@ namespace GroupProject.Controllers
 
         }
 
+        public IActionResult RemoveFromCart(int? id, string returnUrl)
+        {
+            Product product = _context.Products.FirstOrDefault(p => p.ProductId == id);
+
+            if (product != null)
+            {
+                Cart cart = GetCart();
+                cart.RemoveLine(product);
+                SaveCart(cart);
+            }
+
+            return View("AddToCart", new CartIndexViewModel { Cart = GetCart(), ReturnUrl = returnUrl });
+        }
+
         [Authorize]
         // GET: Product/Details/5
         public async Task<IActionResult> Details(int? id)

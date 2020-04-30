@@ -32,7 +32,7 @@ namespace GroupProject.Models
 
         [Required(ErrorMessage = "Card Number is required")]
         [Range(0000000000000000, 9999999999999999, ErrorMessage = "Card Number must be in this format: 5555555555555555")]
-        public int CardNumber { get; set; }
+        public decimal CardNumber { get; set; }
 
         [Required(ErrorMessage = "Month is required")]
         [Range(01, 12, ErrorMessage = "Month must be in this format: 01")]
@@ -47,7 +47,7 @@ namespace GroupProject.Models
         public int CVC { get; set; }
 
 
-        public string ProductId { get; set; }
-        public Product Product { get; set; }
+        //public string ProductId { get; set; }
+        //public Product Product { get; set; }
     }
 }

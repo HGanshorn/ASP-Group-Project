@@ -11,9 +11,10 @@ using System;
 namespace GroupProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200430185950_updateCardNum")]
+    partial class updateCardNum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,6 +193,10 @@ namespace GroupProject.Data.Migrations
 
                     b.Property<int>("Month");
 
+                    b.Property<string>("ProductId");
+
+                    b.Property<int?>("ProductId1");
+
                     b.Property<string>("State")
                         .IsRequired();
 
@@ -200,6 +205,8 @@ namespace GroupProject.Data.Migrations
                     b.Property<int>("Zip");
 
                     b.HasKey("OrderId");
+
+                    b.HasIndex("ProductId1");
 
                     b.ToTable("Orders");
                 });
@@ -348,6 +355,13 @@ namespace GroupProject.Data.Migrations
                     b.HasOne("GroupProject.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("GroupProject.Models.Order", b =>
+                {
+                    b.HasOne("GroupProject.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId1");
                 });
 
             modelBuilder.Entity("GroupProject.Models.Product", b =>
