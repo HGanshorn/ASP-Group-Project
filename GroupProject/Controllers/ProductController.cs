@@ -9,6 +9,8 @@ using GroupProject.Data;
 using GroupProject.Models;
 using GroupProject.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace GroupProject.Controllers
 {
@@ -91,9 +93,9 @@ namespace GroupProject.Controllers
 
             return View(product);
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Manager")]
         // GET: Product/Create
-        public IActionResult Create()
+        public IActionResult Add()
         {
             return View();
         }
@@ -103,18 +105,19 @@ namespace GroupProject.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,Name,Price,Description")] Product product)
+        public async Task<IActionResult> Add([Bind("ProductId,Description,Name,Price")] Product product)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+                
             }
             return View(product);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Manager")]
         // GET: Product/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -131,7 +134,7 @@ namespace GroupProject.Controllers
             return View(product);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Manager")]
         // POST: Product/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
